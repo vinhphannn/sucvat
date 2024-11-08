@@ -1,0 +1,100 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 08, 2024 lúc 02:07 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: `sucvat`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `bang`
+--
+
+CREATE TABLE `bang` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `gpa` int(11) DEFAULT NULL,
+  `ComboID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `bang`
+--
+
+INSERT INTO `bang` (`id`, `name`, `age`, `address`, `gpa`, `ComboID`) VALUES
+(1, 'Nguyen Van A', 20, '123 Đường Chính', 3, 1),
+(2, 'Tran Thi B', 22, '456 Đường Phong', 3, 2),
+(3, 'Le Van C', 21, '789 Đường Sồi', 4, 3),
+(4, 'sagfsdfsg', 50, '345', 54, 3),
+(6, 'phan văn vinh', 43, 'đăk lăk', 10, 3),
+(7, 'phan văn vinh', 12, 'đăk lăk', 534, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `bangid`
+--
+
+CREATE TABLE `bangid` (
+  `ComboID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `bangid`
+--
+
+INSERT INTO `bangid` (`ComboID`) VALUES
+(1),
+(2),
+(3);
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `bang`
+--
+ALTER TABLE `bang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ComboID` (`ComboID`);
+
+--
+-- Chỉ mục cho bảng `bangid`
+--
+ALTER TABLE `bangid`
+  ADD PRIMARY KEY (`ComboID`);
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `bang`
+--
+ALTER TABLE `bang`
+  ADD CONSTRAINT `bang_ibfk_1` FOREIGN KEY (`ComboID`) REFERENCES `bangid` (`ComboID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
