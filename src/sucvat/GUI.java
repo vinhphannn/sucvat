@@ -239,28 +239,27 @@ public class GUI {
     }
 
     // Validate inputs
-// Validate inputs
-private boolean validateInputs() throws Exception {
-    if (txtMa.getText().isEmpty()) throw new Exception("Mã không được để trống!");
-    if (txtTen.getText().isEmpty()) throw new Exception("Tên không được để trống!");
-    
-    // Kiểm tra tên không chứa số
-    if (txtTen.getText().matches(".*\\d.*")) {
-        throw new Exception("Tên không được chứa số!");
+    private boolean validateInputs() throws Exception {
+        if (txtMa.getText().isEmpty()) throw new Exception("Mã không được để trống!");
+        if (txtTen.getText().isEmpty()) throw new Exception("Tên không được để trống!");
+
+        // Kiểm tra tên không chứa số
+        if (txtTen.getText().matches(".*\\d.*")) {
+            throw new Exception("Tên không được chứa số!");
+        }
+
+        if (txtTuoi.getText().isEmpty()) throw new Exception("Tuổi không được để trống!");
+        if (txtNoiSinh.getText().isEmpty()) throw new Exception("Nơi sinh không được để trống!");
+        if (txtDiem.getText().isEmpty()) throw new Exception("Điểm không được để trống!");
+
+        int age = parseInt(txtTuoi.getText().trim(), "Tuổi");
+        if (age <= 0 || age > 50) throw new Exception("Tuổi phải là số dương và không quá 50!");
+
+        int score = parseInt(txtDiem.getText().trim(), "Điểm");
+        if (score < 0) throw new Exception("Điểm không thể âm!");
+
+        return true;
     }
-
-    if (txtTuoi.getText().isEmpty()) throw new Exception("Tuổi không được để trống!");
-    if (txtNoiSinh.getText().isEmpty()) throw new Exception("Nơi sinh không được để trống!");
-    if (txtDiem.getText().isEmpty()) throw new Exception("Điểm không được để trống!");
-
-    int age = parseInt(txtTuoi.getText().trim(), "Tuổi");
-    if (age <= 0 || age > 50) throw new Exception("Tuổi phải là số dương và không quá 50!");
-
-    int score = parseInt(txtDiem.getText().trim(), "Điểm");
-    if (score < 0) throw new Exception("Điểm không thể âm!");
-
-    return true;
-}
 
 
     // Parse integer with exception handling
